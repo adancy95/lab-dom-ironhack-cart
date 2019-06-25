@@ -12,9 +12,6 @@ let itemTotalArray = Array.from(itemTotal);
 // grabs calculate button
 let calBtn = document.getElementById('calculate-prices');
 
-//grabs delete buttons
-let delBtn = document.querySelectorAll('.btn-delete');
-
 //grab the total of the cart
 let cartTotal = document.querySelector('#total-price > span');
 
@@ -39,12 +36,19 @@ calBtn.onclick = function calPrice(){
 
 }
 
- 
-// function deleteItem(e){
+//grabs all delete buttons
+let delBtn = document.querySelectorAll('.btn-delete');
+let delBtnArray = Array.from(delBtn)
 
-// }
   
-
+delBtnArray.forEach(oneDelButton => {
+  oneDelButton.onclick = function(e){
+    // grabs the row that needs to be deleted
+   let itemToDel =  e.currentTarget.parentNode.parentNode;
+   //removes the row
+   itemToDel.remove();
+  }
+})
 
 
 
