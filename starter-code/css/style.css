@@ -39,3 +39,29 @@ input {
 .quantity {
   margin: 0 5px;
 }
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.new-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+#title {
+  width: 25%;
+ margin-left: 50%;
+}
+
+#total-price {
+  margin-left: 49%;
+}
+
+#calculate-prices{
+  margin-left: 49%;
+  margin-top: 5%;
+}
