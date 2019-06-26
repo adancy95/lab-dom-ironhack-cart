@@ -45,13 +45,20 @@ input {
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 20px;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.item > div {
+  width: 20%;
 }
 .new-item {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
   margin-bottom: 20px;
+  margin-top: 5%;
 }
+
 #title {
   width: 25%;
  margin-left: 50%;
