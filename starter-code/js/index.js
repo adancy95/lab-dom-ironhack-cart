@@ -1,5 +1,5 @@
 
-window.onload = function(){
+
 
   // grabs calculate button
   let calBtn = document.getElementById('calculate-prices');
@@ -70,27 +70,25 @@ let createBtn= document.querySelector('#createBtn');
     productName.value = '';
     price.value = '';
 
-    delBtnArray.push(div.lastChild.firstChild)
-
-    
+    //add delete event listener to newly created item 
+    div.lastChild.firstChild.addEventListener('click', deleteItem)
+ 
  }
 
+
+    function deleteItem(e){
+      let itemToDel =  e.currentTarget.parentNode.parentNode;
+      itemToDel.remove();
+    }
 
  let delBtn = document.querySelectorAll('.btn-delete');
  let delBtnArray = Array.from(delBtn)
  
+ for(const delButton of delBtnArray){
+   delButton.addEventListener('click', deleteItem);
+  }
  
-  delBtnArray.forEach(oneDelButton => {
-   oneDelButton.onclick = function(e){
-     //grabs all delete buttons
-  
-     // grabs the row that needs to be deleted
-    let itemToDel =  e.currentTarget.parentNode.parentNode;
-    //removes the row
-    itemToDel.remove();
-   }
-});
 
 
-}
+
 
