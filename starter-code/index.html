@@ -10,7 +10,7 @@
   <title>Ironhack cart</title>
 </head>
 <body>
-  <h1> Ironhack Merchandising Shop</h1>
+  <h1 id="title"> Ironhack Merchandising Shop</h1>
 
   <div class="item">
     <div><span>Product 1</span></div>
@@ -34,6 +34,19 @@
       <div><span>$0.00</span></div>
       <div><button class="btn btn-delete">Delete</button></div>
     </div>
+
+    <div class="new-item">
+      <div>
+          <label for="productName">Product Name:</label> 
+          <input id="productName" name="productName"> 
+      </div>
+      <div>
+          <label for="price">Price:</label>
+          <input id="price" name="price">
+      </div>
+        <button id="createBtn">Create</button>
+    </div>
+    
 
  <div>
     <button id="calculate-prices" class="btn btn-success"> Calculate Prices</button>
