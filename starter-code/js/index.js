@@ -1,26 +1,28 @@
 
-// grabs all of the prices on the page
-let itemprice = document.querySelectorAll('.item > div:nth-child(2) > span');
-let itemPriceArray = Array.from(itemprice);
+window.onload = function(){
 
+  // grabs calculate button
+  let calBtn = document.getElementById('calculate-prices');
 
-//grabs all of the item totals after 
-let itemTotal = document.querySelectorAll('.item > div:nth-child(4) > span'); 
-let itemTotalArray = Array.from(itemTotal);
-
-
-// grabs calculate button
-let calBtn = document.getElementById('calculate-prices');
-
-//grab the total of the cart
-let cartTotal = document.querySelector('#total-price > span');
+  //grab the total of the cart
+  let cartTotal = document.querySelector('#total-price > span');
 
 
 calBtn.onclick = function calPrice(){
-  //grabs all of the quantities
-   let qty = document.querySelectorAll('.qty');  
-   let qtyArray = Array.from(qty)
+
+      // grabs all of the prices on the page
+      let itemprice = document.querySelectorAll('.item > div:nth-child(2) > span');
+      let itemPriceArray = Array.from(itemprice);
+  
+      //grabs all of the item totals after 
+      let itemTotal = document.querySelectorAll('.item > div:nth-child(4) > span'); 
+      let itemTotalArray = Array.from(itemTotal);
     
+      //grabs all of the quantities
+      let qty = document.querySelectorAll('.qty');  
+      let qtyArray = Array.from(qty)
+  
+  
    // returns the total price for each item on the corresponding line
    let itemRawPrice = itemPriceArray.map((eachPrice, index) => {
      
@@ -33,92 +35,62 @@ calBtn.onclick = function calPrice(){
    // returns the cart total
     let sum = itemRawPrice.reduce((accumlator, val) => accumlator + val);
     cartTotal.innerHTML = `$${sum}.00`;
+  }
+
+
+
+
+//grab create button
+let createBtn= document.querySelector('#createBtn');
+ createBtn.onclick = function addItem(){
+    
+    // Add new products to inventory
+    let productName = document.getElementById('productName');
+    let price = document.getElementById('price'); 
+
+    //create the item div
+    let div = document.createElement("div");
+    
+    //add the item class to the new item
+    div.classList.add('item')
+
+    //make html dom string
+    let domString = `<div><span>${productName.value}</span></div><div><span>$${price.value}.00</span></div>
+                     <div><label for="qty">QTY</label><input class="qty" name="qty"></div><div><span>$0.00</span></div>
+                     <div><button class="btn btn-delete">Delete</button></div>`
+
+    div.innerHTML = domString;
+   
+    let newItem = document.querySelector('.new-item');
+
+    //adds the new item at the bottom of the list 
+    newItem.before(div);
+
+    //clears the input fields for the new product
+    productName.value = '';
+    price.value = '';
+
+    delBtnArray.push(div.lastChild.firstChild)
+
+    
+ }
+
+
+ let delBtn = document.querySelectorAll('.btn-delete');
+ let delBtnArray = Array.from(delBtn)
+ 
+ 
+  delBtnArray.forEach(oneDelButton => {
+   oneDelButton.onclick = function(e){
+     //grabs all delete buttons
+  
+     // grabs the row that needs to be deleted
+    let itemToDel =  e.currentTarget.parentNode.parentNode;
+    //removes the row
+    itemToDel.remove();
+   }
+});
+
 
 }
 
-//grabs all delete buttons
-let delBtn = document.querySelectorAll('.btn-delete');
-let delBtnArray = Array.from(delBtn)
-
-  
-delBtnArray.forEach(oneDelButton => {
-  oneDelButton.onclick = function(e){
-    // grabs the row that needs to be deleted
-   let itemToDel =  e.currentTarget.parentNode.parentNode;
-   //removes the row
-   itemToDel.remove();
-  }
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function getPriceByProduct(itemNode){
-
-// }
-
-// function updatePriceByProduct(productPrice, index){
-
-// }
-
-// function getTotalPrice() {
-
-// }
-
-// function createQuantityInput(){
-
-// }
-
-// function createDeleteButton(){
-
-// }
-
-// function createQuantityNode(){
-
-// }
-
-// function createItemNode(dataType, itemData){
-
-// }
-
-// function createNewItemRow(itemName, itemUnitPrice){
-
-// }
-
-// function createNewItem(){
-
-// }
-
-// window.onload = function(){
-//   var calculatePriceButton = document.getElementById('calc-prices-button');
-//   var createItemButton = document.getElementById('new-item-create');
-//   var deleteButtons = document.getElementsByClassName('btn-delete');
-
-//   calculatePriceButton.onclick = getTotalPrice;
-//   createItemButton.onclick = createNewItem;
-
-//   for(var i = 0; i<deleteButtons.length ; i++){
-//     deleteButtons[i].onclick = deleteItem;
-//   }
-// };
